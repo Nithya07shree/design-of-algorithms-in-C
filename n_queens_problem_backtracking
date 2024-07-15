@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<math.h>
+int c[20],count=0;
+void queen(int k,int n);
+int main()
+{
+int n,i,j;
+printf(" - N Queens Problem Using Backtracking -");
+printf("\n\nEnter number of Queens:");
+scanf("%d",&n);
+if(n==2||n==3)
+ printf("No solution exists");
+queen(1,n);
+return 0;
+}
+//function for printing the solution
+void print_solution (int n)
+{
+int i,j;
+printf("\n\nSolution %d:\n\n",++count);
+for(i=1;i<=n;i++)
+{
+for(j=1;j<=n;j++) //for nxn board
+{
+if(c[i]==j)
+printf("\tQ"); //queen at i,j position
+else
+printf("\t-"); //empty slot
+}
+printf("\n");
+}
+}
+/*funtion to check conflicts
+If no conflict for desired postion returns 1 otherwise returns 0*/
+int place(int k,int col)
+{
+int i;
+for(i=1;i<=k-1;i++)
+{
+//checking column and digonal conflicts
+if((c[i]==col) ||(abs(c[i]-col)==abs(i-k)))
+return 0;
+}
+return 1; //no conflict
+}
+//function to check for proper positioning of queen
+void queen(int k,int n)
+{
+int col;
+for(col=1;col<=n;col++)
+{
+if(place(k,col))
+{
+c[k]=col; //no conflicts so place queen
+if(k==n) //dead end
+print_solution(n); //printing the board configuration
+else //try queen with next position
+queen(k+1,n);
+}
+}
+}
