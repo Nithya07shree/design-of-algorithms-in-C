@@ -1,2 +1,2 @@
-# design-of-algorithms-in-C
-#This repository is my work, that I have practiced during my fourth semester(2024) in BE
+<b>Design of algorithms in C </b><br>
+A collection of programs implementing various data structures and algorithms in C, covering fundamental concepts and techniques.
